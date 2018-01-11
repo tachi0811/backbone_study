@@ -13,6 +13,7 @@ requirejs.config({
   }
 });
 
+// 
 require(["models/BookModel"], function(model) {
 
   var bookModel = new model.BookModel({title: "本のタイトル"});
