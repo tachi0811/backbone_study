@@ -1,5 +1,8 @@
 
-define(["libs/jquery.min" ,"libs/underscore-min", "libs/backbone-min"], function($, _, Backbone) {
+define(["jquery",
+  "underscore", 
+  "backbone"], 
+function($, _, Backbone) {
   var BookModel = Backbone.Model.extend({
     urlRoot: '/books/',
     initialize: function() {

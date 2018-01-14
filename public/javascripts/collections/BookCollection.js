@@ -1,5 +1,9 @@
-
-define(["libs/jquery.min" ,"libs/underscore-min", "libs/backbone-min"], function($, _, Backbone) {
+'use strict'
+define(["libs/jquery.min",
+  "libs/underscore-min", 
+  "libs/backbone-min",
+], 
+function($, _, Backbone) {
   var BookCollection = Backbone.Collection.extend({
     url: '/books/',
     initialize: function() {

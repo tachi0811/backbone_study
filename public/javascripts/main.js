@@ -1,24 +1,40 @@
+'use strict'
+
 requirejs.config({
+
   shim: {
-    "libs/jquery.min": {
-      export: "jQuery"
+    jquery: {
+      exports: "$"
     },
-    "libs/underscore-min": {
-      export: "_"
+    underscore: {
+      exports: "_"
     },
-    "libs/backbone-min": {
-      deps: ["libs/jquery.min", "libs/underscore-min"],
-      export: "Backbone"
+    backbone: {
+      deps: ["jquery", "underscore"],
+      exports: "Backbone"
+    },
+    handlebars: {
+      exports: 'Handlebars'
     }
+  },
+
+  paths: {
+    jquery: './libs/jquery.min',
+    underscore:'./libs/underscore-min',
+    backbone: './libs/backbone-min',
+    handlebars: './libs/handlebars.min',
   }
 });
 /**
  * ココからメイン処理
  */
-require(["models/BookModel", "collections/BookCollection"], function(model, collection) {
-
-  // モデル操作のサンプル
-  var bookModel = new model.BookModel({id: 6, title: "本のタイトル"});
+require(["models/BookModel", 
+  "collections/BookCollection", 
+  "views/BookView",
+], 
+function(model, collection, view) {
+  // Model操作のサンプル
+  let bookModel = new model.BookModel({id: 6, title: "本のタイトル"});
 
   console.log("modelから値の取得 -> " + bookModel.get('title'));
   console.log("modelの属性を全てJSON -> " + JSON.stringify(bookModel.attributes));
@@ -55,8 +71,8 @@ require(["models/BookModel", "collections/BookCollection"], function(model, coll
     }
   });
 
-  // コレクションのサンプル
-  var bookCollection = new collection.BookCollection({ model: bookModel});
+  // Collection操作のサンプル
+  let bookCollection = new collection.BookCollection({ model: bookModel});
 
   // server access をした後にモデルをツメツメする
   bookCollection.fetch({
@@ -70,6 +86,11 @@ require(["models/BookModel", "collections/BookCollection"], function(model, coll
     error: function(collection, xhr, option) {
       console.log('** book server access error');
     }
+  });
+
+  // View操作のサンプル
+  let bookhView = new view.BookView({ 
+    el: '#main',  
   });
 
 });
