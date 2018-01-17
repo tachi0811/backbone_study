@@ -3,7 +3,6 @@ define([
   "jquery",
   "underscore", 
   "backbone",
-  "handlebars",
   "collections/BookCollection",
   "models/BookModel",
   "views/BookListView",
@@ -13,7 +12,7 @@ define([
  * 検索条件のViewと
  * 検索結果のViewを取得してイベントを発行する
  */
-function($, _, Backbone, Handlebars, Collection, Model, ListView, SearchView) {
+function($, _, Backbone, Collection, Model, ListView, SearchView) {
   let BookView = Backbone.View.extend({
     /**
      * 初期処理

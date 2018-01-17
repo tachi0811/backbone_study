@@ -3,14 +3,13 @@ define([
   "jquery",
   "underscore", 
   "backbone",
-  "handlebars",
   "collections/BookCollection",
   "models/BookModel",
 ], 
 /**
  * 検索結果のリストView
  */
-function($, _, Backbone, Handlebars, Collection, Model) {
+function($, _, Backbone, Collection, Model) {
   let BookListView = Backbone.View.extend({
     /**
      * 初期処理

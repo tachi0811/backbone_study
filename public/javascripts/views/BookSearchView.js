@@ -3,12 +3,11 @@ define([
   "jquery",
   "underscore", 
   "backbone",
-  "handlebars",
 ], 
 /**
  * 検索条件のView
  */
-function($, _, Backbone, Handlebars) {
+function($, _, Backbone) {
   let BookSearchView = Backbone.View.extend({
     /**
      * 初期処理
