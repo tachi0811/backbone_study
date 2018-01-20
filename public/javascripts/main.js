@@ -13,6 +13,12 @@ requirejs.config({
       deps: ["jquery", "underscore"],
       exports: "Backbone"
     },
+    relational: {
+      deps: ["backbone"]
+    },
+    stickit: {
+      deps: ["backbone"]
+    },
     hbs: {
       exports: 'hbs'
     }
@@ -22,6 +28,8 @@ requirejs.config({
     jquery: './libs/jquery.min',
     underscore:'./libs/underscore-min',
     backbone: './libs/backbone-min',
+    relational: './libs/backbone-relational',
+    stickit: './libs/backbone.stickit',
     hbs: './libs/hbs',
   }
 });
@@ -31,9 +39,10 @@ requirejs.config({
 require(["models/BookModel", 
   "collections/BookCollection", 
   "views/BookView",
-  "hbs!templates/BookTemplate"
+  "hbs!templates/BookTemplate",
+  "backbone",
 ], 
-function(model, collection, view, hbs) {
+function(model, collection, view, hbs, backbone) {
   // Model操作のサンプル
   let bookModel = new model.BookModel({id: 6, title: "本のタイトル"});
 
