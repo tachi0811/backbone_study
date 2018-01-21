@@ -1,13 +1,36 @@
 'use strict'
-define(["libs/jquery.min",
-  "libs/underscore-min", 
-  "libs/backbone-min",
+define([
+  "jquery",
+  "underscore", 
+  "backbone",
 ], 
 function($, _, Backbone) {
+  /**
+   * BookCollection
+   */
   var BookCollection = Backbone.Collection.extend({
     url: '/books/',
+    /**
+     * 
+     */
     initialize: function() {
-      console.log("book model initialize");
+      console.log("BookCollection initialize start >>>");
+      console.log("BookCollection initialize end <<<");
+    },
+    /**
+     * パラメータの設定
+     */
+    setParams: function(id, name) {
+      console.log("BookCollection setParams start >>>");
+      let url = '/books/';
+      if (id === null || id.trim() === "") {
+        id = '%20';
+      } 
+      if (name === null || name.trim() === "") {
+        name = '%20'
+      } 
+      this.url = '/books/' + id + '/' + name + '/';
+      console.log("BookCollection setParams end <<<");
     },
   });
   return {

@@ -21,7 +21,7 @@ requirejs.config({
     },
     hbs: {
       exports: 'hbs'
-    }
+    },
   },
 
   paths: {
@@ -41,62 +41,63 @@ require(["models/BookModel",
   "views/BookView",
   "hbs!templates/BookTemplate",
   "backbone",
+  "stickit"
 ], 
 function(model, collection, view, hbs, backbone) {
-  // Model操作のサンプル
-  let bookModel = new model.BookModel({id: 6, title: "本のタイトル"});
+  // // Model操作のサンプル
+  // let bookModel = new model.BookModel({id: 6, title: "本のタイトル"});
 
-  console.log("modelから値の取得 -> " + bookModel.get('title'));
-  console.log("modelの属性を全てJSON -> " + JSON.stringify(bookModel.attributes));
+  // console.log("modelから値の取得 -> " + bookModel.get('title'));
+  // console.log("modelの属性を全てJSON -> " + JSON.stringify(bookModel.attributes));
   
-  // model へ値の設定
-  bookModel.set("year", 2018);
+  // // model へ値の設定
+  // bookModel.set("year", 2018);
   
-  // 属性の存在確認
-  bookModel.has('title');
+  // // 属性の存在確認
+  // bookModel.has('title');
   
-  // 属性の削除
-  bookModel.unset('title');
+  // // 属性の削除
+  // bookModel.unset('title');
   
-  // 属性の存在確認
-  bookModel.has('title');
+  // // 属性の存在確認
+  // bookModel.has('title');
 
-  // server access
-  bookModel.fetch({
-    success: function(model, response, option) {
-      console.log('** book server access model id:' + model.get('id'));
-      console.log(JSON.stringify(model));
-    },
-    error: function(model, xhr, option) {
-      console.log('** book server access error');
-    }
-  });
+  // // server access
+  // bookModel.fetch({
+  //   success: function(model, response, option) {
+  //     console.log('** book server access model id:' + model.get('id'));
+  //     console.log(JSON.stringify(model));
+  //   },
+  //   error: function(model, xhr, option) {
+  //     console.log('** book server access error');
+  //   }
+  // });
 
-  // id を変更して再度サーバーにアクセスする
-  bookModel.set('id', 2);
-  bookModel.fetch({
-    success: function(model, response, option) {
-      console.log('** book server access model id:' + model.get('id'));
-      console.log(JSON.stringify(model));
-    }
-  });
+  // // id を変更して再度サーバーにアクセスする
+  // bookModel.set('id', 2);
+  // bookModel.fetch({
+  //   success: function(model, response, option) {
+  //     console.log('** book server access model id:' + model.get('id'));
+  //     console.log(JSON.stringify(model));
+  //   }
+  // });
 
-  // Collection操作のサンプル
-  let bookCollection = new collection.BookCollection({ model: bookModel});
+  // // Collection操作のサンプル
+  // let bookCollection = new collection.BookCollection({ model: bookModel});
 
-  // server access をした後にモデルをツメツメする
-  bookCollection.fetch({
-    success: function(collection, response, option) {
-      console.log('** book server access collection');
-      // データを取得してcollectionに詰まっている状態で戻る
-      collection.forEach(function(model) {
-        console.log(JSON.stringify(model));
-      });
-    },
-    error: function(collection, xhr, option) {
-      console.log('** book server access error');
-    }
-  });
+  // // server access をした後にモデルをツメツメする
+  // bookCollection.fetch({
+  //   success: function(collection, response, option) {
+  //     console.log('** book server access collection');
+  //     // データを取得してcollectionに詰まっている状態で戻る
+  //     collection.forEach(function(model) {
+  //       console.log(JSON.stringify(model));
+  //     });
+  //   },
+  //   error: function(collection, xhr, option) {
+  //     console.log('** book server access error');
+  //   }
+  // });
 
   // View操作のサンプル
   let bookhView = new view.BookView({ 

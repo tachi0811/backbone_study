@@ -15,7 +15,7 @@ function($, _, Backbone) {
     },
     defaults: {
       id: null,
-       name: 'Book Name',
+      name: 'Book Name',
     }
   });
   return {
