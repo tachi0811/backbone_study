@@ -1,8 +1,9 @@
 
 define(["jquery",
   "underscore", 
-  "backbone"], 
-function($, _, Backbone) {
+  "backbone",
+  "stickit"], 
+function($, _, Backbone, stickit) {
   var BookModel = Backbone.Model.extend({
     urlRoot: '/books/',
     initialize: function() {
@@ -15,7 +16,7 @@ function($, _, Backbone) {
     },
     defaults: {
       id: null,
-      name: 'Book Name',
+      name: null,
     }
   });
   return {

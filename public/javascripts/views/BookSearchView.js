@@ -3,19 +3,20 @@ define([
   "jquery",
   "underscore", 
   "backbone",
+  "stickit",
   "hbs!templates/BookSearchTemplate"
 ], 
 /**
  * 検索条件のView
  */
-function($, _, Backbone, template) {
+function($, _, Backbone, stickit, template) {
   var BookSearchView = Backbone.View.extend({
     /**
      * bindings 設定
      */
     bindings: {
-      '#id': 'id',
-      '#name': 'name',
+      '#id': "id",
+      '#name': "name"
     },
     /**
      * 初期処理
@@ -35,7 +36,7 @@ function($, _, Backbone, template) {
       self.$el.empty();
       self.$el.append(template({}));
       // 値をバインド
-      self.stickit;
+      self.stickit();
       console.log('BookSearchView render end <<<');
       return self;
     }

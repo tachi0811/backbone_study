@@ -17,7 +17,8 @@ requirejs.config({
       deps: ["backbone"]
     },
     stickit: {
-      deps: ["backbone"]
+      deps: ["backbone"],
+      exports: "stickit"
     },
     hbs: {
       exports: 'hbs'

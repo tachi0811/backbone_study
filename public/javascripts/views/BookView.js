@@ -19,18 +19,19 @@ function($, _, Backbone, Collection, Model, ListView, SearchView, template) {
      * 初期処理
      */
     initialize: function() {
+      this.bookModel = new Model.BookModel();
       this.render();
     },
     /**
      * イベント宣言
      */
-    // events: {
-    //   'click #search': 'searchClick'
-    // },
+    events: {
+      'click #search': true
+    },
     /**
      * 検索ボタンクリックイベント
      */
-    searchClick: function(e) {
+    'click #search': function(e) {
       console.log('bookView searchClick');
       // searchViewからモデルを取得し、リストへ渡す >> うまくバインドで来ていない
       let searchParams = this.searchView.model;
@@ -42,7 +43,7 @@ function($, _, Backbone, Collection, Model, ListView, SearchView, template) {
     render: function() {
       this.$el.empty();
       this.$el.append(template({}));
-      this.searchView = new SearchView.BookSearchView({el: '#search', model: Model.BookModel});
+      this.searchView = new SearchView.BookSearchView({el: '#search', model: this.bookModel});
       this.listView = new ListView.BookListView({el: '#list'});
 
       return self;
