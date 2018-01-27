@@ -3,27 +3,19 @@ define([
   "jquery",
   "underscore", 
   "backbone",
-  "collections/BookCollection",
-  "models/BookModel",
   "hbs!templates/BookListTemplate"
 ], 
 /**
  * 検索結果のリストView
  */
-function($, _, Backbone, Collection, Model, template) {
+function($, _, Backbone, template) {
   var BookListView = Backbone.View.extend({
     /**
      * 初期処理
      */
     initialize: function() {
       console.log('BookListView initialize start >>>');
-      let bookCollection = new Collection.BookCollection(
-        {model: new Model.BookModel()}
-      );
-      this.collection = bookCollection;
-      // 初期描画処理
-      this.read(null, null);
-      this.listenTo(this.collection, 'sync', this.render);
+      this.render();
       console.log('BookListView initialize end <<<');
     },
     /**
@@ -42,12 +34,19 @@ function($, _, Backbone, Collection, Model, template) {
      */
     render: function() {
       console.log("BookListView render start >>>")
-      let self = this;
-      self.$el.empty();
-      self.$el.append(template( { books: this.collection.toJSON() }));
+      this.$el.empty();
+      this.$el.append(template( { books: null }));
       console.log("BookListView render end <<<")
-      return self;
-
+      return this;
+    },
+    /**
+     * 一覧描画処理
+     */
+    _render: function(collection) {
+      console.log('BookListView _render start >>>');
+      this.$el.empty();
+      this.$el.append(template( { books: collection.toJSON() }));
+      console.log('BookListView _render end <<<');
     }
   });
   return {

@@ -15,10 +15,11 @@ function($, _, Backbone) {
      */
     initialize: function() {
       console.log("BookCollection initialize start >>>");
+
       console.log("BookCollection initialize end <<<");
     },
     /**
-     * パラメータの設定
+     * リストの取得
      */
     setParams: function(id, name) {
       console.log("BookCollection setParams start >>>");
@@ -30,6 +31,7 @@ function($, _, Backbone) {
         name = '%20'
       } 
       this.url = '/books/' + id + '/' + name + '/';
+      this.fetch();
       console.log("BookCollection setParams end <<<");
     },
   });

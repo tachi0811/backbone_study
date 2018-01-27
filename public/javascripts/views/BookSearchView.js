@@ -22,7 +22,6 @@ function($, _, Backbone, stickit, template) {
      * 初期処理
      */
     initialize: function() {
-
       console.log('BookSearchView initialize start >>>');
       this.render();
       console.log('BookSearchView initialize end <<<');
@@ -32,13 +31,12 @@ function($, _, Backbone, stickit, template) {
      */
     render: function() {
       console.log('BookSearchView render start >>>');
-      let self = this;
-      self.$el.empty();
-      self.$el.append(template({}));
+      this.$el.empty();
+      this.$el.append(template({}));
       // 値をバインド
-      self.stickit();
+      this.stickit();
       console.log('BookSearchView render end <<<');
-      return self;
+      return this;
     }
   });
   return {
